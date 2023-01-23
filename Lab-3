@@ -10,7 +10,7 @@ class Node:
         self.last = last
 
     @property
-    def seq(self): # to keep track of the sequence used to get to the goal
+    def seq(self): l
         node, seq = self, []
         while node:
             seq.append(node)
@@ -19,7 +19,7 @@ class Node:
 
     @property
     def state(self):
-        return str(self.puzzle.board) # hashable so it can be compared in sets
+        return str(self.puzzle.board) 
 
     @property
     def isSolved(self):
@@ -39,7 +39,7 @@ class Puzzle:
 
         possibleNewBoards = []
 
-        zeroPos = self.board.index(0) # find the zero tile to determine possible moves
+        zeroPos = self.board.index(0) 
 
         if zeroPos == 0:
             possibleNewBoards.append(self.move(0,1))
@@ -75,15 +75,15 @@ class Puzzle:
             possibleNewBoards.append(self.move(8,5))
             possibleNewBoards.append(self.move(8,7))
 
-        return possibleNewBoards # returns Puzzle objects (maximum of 4 at a time)
+        return possibleNewBoards 
 
     def move(self, current, to):
 
-        changeBoard = self.board[:] # create a copy
-        changeBoard[to], changeBoard[current] = changeBoard[current], changeBoard[to] # switch the tiles at the passed positions
-        return Puzzle(changeBoard) # return a new Puzzle object
+        changeBoard = self.board[:] 
+        changeBoard[to], changeBoard[current] = changeBoard[current], changeBoard[to]
+        return Puzzle(changeBoard) 
 
-    def printPuzzle(self): # prints board in 8 puzzle style
+    def printPuzzle(self): 
 
         copyBoard = self.board[:]
         for i in range(9):
@@ -95,7 +95,7 @@ class Puzzle:
 
     @property
     def isSolved(self):
-        return self.board == [0,1,2,3,4,5,6,7,8] # goal board
+        return self.board == [0,1,2,3,4,5,6,7,8] 
 
 class Solver:
 
@@ -115,8 +115,8 @@ class Solver:
                     if nextNode.state not in visited:
                         visited.add(nextNode.state)
                         goalNode = DLS(nextNode, depth - 1)
-                        if goalNode != None: # I thought this should be redundant but it never finds a soln if I take it out
-                            if goalNode.isSolved: # same as above ^
+                        if goalNode != None: 
+                            if goalNode.isSolved: 
                                 return goalNode
 
         for depth in itertools.count():
@@ -136,7 +136,7 @@ start = time.time()
 goalSeq = mySolver.IDDFS()
 end = time.time()
 
-counter = -1 # starting state doesn't count as a move
+counter = -1 
 for node in goalSeq:
     counter = counter + 1
     node.puzzle.printPuzzle()
