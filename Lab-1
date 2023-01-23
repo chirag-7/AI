@@ -78,8 +78,7 @@ def analyzeboard(board):
 def main():
     choice=input("Enter 1 for single player, 2 for multiplayer: ");
     choice=int(choice);
-    #The broad is considered in the form of a single dimentional array.
-    #One player moves 1 and other move -1.
+
     board=[0,0,0,0,0,0,0,0,0];
     if(choice==1):
         print("Computer : O Vs. You : X");
