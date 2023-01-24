@@ -12,7 +12,7 @@ def main():
         print("=========PROGRAM FOR UNIFICATION=========")
         no_of_pred = int(input("Enter Number of Predicates:"))
         for i in range(no_of_pred):
-            # nouse=input() #   //to accept "enter" as a character
+            # nouse=input() #  
             print("Enter Predicate ", (i+1), " :")
             predicate[i] = input()
             print("Enter No.of Arguments for Predicate ", predicate[i], " :")
